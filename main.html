@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Devine Lavalink</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: black;
+        color: #00ffcc;
+        font-family: monospace;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        margin-bottom: 25px;
+        letter-spacing: 3px;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .box {
+        width: 90%;
+        max-width: 420px;
+        background: #0a0a0a;
+        border: 2px solid #00ffcc;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 0 20px #00ffcc;
+        font-size: 15px;
+    }
+
+    a {
+        color: #00ffcc;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 16px;
+        background: #00ffcc;
+        margin-left: 4px;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>DEVINE LAVALINK</h1>
+
+<div class="box">
+    <pre id="output"></pre><span class="cursor"></span>
+</div>
+
+<script>
+const text = `
+Name : DEVINE NODE
+IP : node.kyrahost.cloud
+Port : 25610
+Password : panel.kyrahost.cloud
+
+Contact :
+https://panel.kyrahost.cloud
+https://discord.gg/5YsStsgmXA
+https://kyrahost.xyz
+`;
+
+let i = 0;
+const speed = 35;
+
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("output").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, speed);
+    } else {
+        // make contact link clickable after typing
+        let output = document.getElementById("output").innerHTML;
+        output = output.replace(
+            "https://panel.kyrahost.cloud",
+            "<a href='https://panel.kyrahost.cloud' target='_blank'>https://panel.kyrahost.cloud</a>"
+        );
+        document.getElementById("output").innerHTML = output;
+    }
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
